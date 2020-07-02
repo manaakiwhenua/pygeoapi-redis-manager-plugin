@@ -1,0 +1,1 @@
+pygeoapi_redis_manager_plugin

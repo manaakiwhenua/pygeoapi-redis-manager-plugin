@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: pygeoapi-redis-manager-plugin
+Version: 0.0.1
+Summary: pygeoapi plugin using Redis and RQ as a processing queue and persistent storage
+Home-page: https://github.com/manaakiwhenua/pygeoapi-redis-manager-plugin
+Author: Richard Law
+Author-email: lawr@landcareresearch.co.nz
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN
