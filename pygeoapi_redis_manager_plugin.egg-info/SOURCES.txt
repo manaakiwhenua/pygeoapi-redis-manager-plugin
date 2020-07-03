@@ -1,6 +1,6 @@
 README.md
 setup.py
-pygeoapi_redis_manager_plugin/redis_.py
+pygeoapi_redis_manager_plugin/__init__.py
 pygeoapi_redis_manager_plugin/redis_worker_.py
 pygeoapi_redis_manager_plugin.egg-info/PKG-INFO
 pygeoapi_redis_manager_plugin.egg-info/SOURCES.txt
