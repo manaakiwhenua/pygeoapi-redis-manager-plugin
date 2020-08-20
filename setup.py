@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='pygeoapi_redis_manager_plugin',
-    version='0.0.2',
+    version='0.0.3',
     description='pygeoapi plugin using Redis and RQ as a processing queue and persistent storage',
     url='https://github.com/manaakiwhenua/pygeoapi-redis-manager-plugin',
     author='Richard Law',

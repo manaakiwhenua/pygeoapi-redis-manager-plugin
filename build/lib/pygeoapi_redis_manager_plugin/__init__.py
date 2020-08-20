@@ -143,10 +143,10 @@ class RedisManager(BaseManager):
         try:
             if pool:
                 LOGGER.debug(f'Connecting to Redis connection pool: {self.db}')
-                return redis.Redis(connection_pool=self.db)
+                return redis.Redis(connection_pool=self.db, socket_connect_timeout=10)
             else:
                 LOGGER.debug(f'Connecting to Redis: {self.connection}')
-                return redis.Redis(self.connection, port=6379, db=0, decode_responses=decode_responses)
+                return redis.Redis(self.connection, socket_connect_timeout=10, port=6379, db=0, decode_responses=decode_responses)
         except redis.exceptions.ConnectionError as exc:
             # TODO - wait, retry, return 503 (Service Unavailable)?
             LOGGER.debug(exc)
