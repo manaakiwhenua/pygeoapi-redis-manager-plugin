@@ -95,6 +95,28 @@ The `worker` `command` `/pygeoapi/pygeoapi/process/manager/redis_worker_.py -q h
 
 Workers depend on two environment variables, `REDIS` and `PORT` which specify the hostname or IP address of the redis instance they can use, and the appropriate port.
 
+### Redis configuration
+
+In addition, you will need to set up the `redis.conf` (Redis configuration file) that matches these binds (if appropriate for your networking pattern).
+
+> By default, if no "bind" configuration directive is specified, Redis listens # for connections from all the network interfaces available on the server. It is possible to listen to just one or multiple selected interfaces using the "bind" configuration directive, followed by one or more IP addresses.
+
+Add this line (or replace the line beginning with `bind`) to your `redis.conf`:
+
+```
+bind 172.21.0.3
+```
+
+This matches the block in the `docker-compose.yml`:
+
+```yaml
+services:
+  broker:
+    networks:
+      frontend:
+        ipv4_address: 172.21.0.3 # <----
+```
+
 ### Dashboard
 
 If you define an additional service:
