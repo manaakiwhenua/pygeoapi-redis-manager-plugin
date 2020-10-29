@@ -97,9 +97,9 @@ Workers depend on two environment variables, `REDIS` and `PORT` which specify th
 
 ### Redis configuration
 
-In addition, you will need to set up the `redis.conf` (Redis configuration file) that matches these binds (if appropriate for your networking pattern).
+In addition, you will need to set up the `redis.conf` (Redis configuration file) that matches these binds (if appropriate for your networking pattern). You can get a default Redis configuration for your version of Redis [here](https://redis.io/topics/config)
 
-> By default, if no "bind" configuration directive is specified, Redis listens # for connections from all the network interfaces available on the server. It is possible to listen to just one or multiple selected interfaces using the "bind" configuration directive, followed by one or more IP addresses.
+> By default, if no "bind" configuration directive is specified, Redis listens for connections from all the network interfaces available on the server. It is possible to listen to just one or multiple selected interfaces using the "bind" configuration directive, followed by one or more IP addresses.
 
 Add this line (or replace the line beginning with `bind`) to your `redis.conf`:
 
