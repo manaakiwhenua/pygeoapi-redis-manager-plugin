@@ -92,10 +92,18 @@ git+https://github.com/manaakiwhenua/pygeoapi-redis-manager-plugin.git@master
 Additionally, add this to `pygeoapi/plugin.py` (pending a better way to integrate plugins into pygeoapi):
 
 ```python
-    'process_manager': {
-        'TinyDB': 'pygeoapi.process.manager.tinydb_.TinyDBManager',
-        'Redis': 'pygeoapi_redis_manager_plugin.RedisManager' # <---
-    }
+'process_manager': {
+    'TinyDB': 'pygeoapi.process.manager.tinydb_.TinyDBManager',
+    'Redis': 'pygeoapi_redis_manager_plugin.RedisManager' # <---
+}
+```
+
+Finally, set your pygeoapi YAML configuration to include this under the `server` block:
+
+```yaml
+manager:
+  name: Redis
+  connection: 172.21.0.3
 ```
 
 If you run `docker-compose up --scale worker=4`, then all the defined services will be brought up in orchestra, with four worker processes running. This means that as many as four processing jobs can be executed at once, with any other jobs after that being put onto the worker queue and executed as workers complete existing jobs.
