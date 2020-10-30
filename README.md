@@ -89,6 +89,15 @@ This depends on your pygeoapi instance being built with an additional dependency
 git+https://github.com/manaakiwhenua/pygeoapi-redis-manager-plugin.git@master
 ```
 
+Additionally, add this to `pygeoapi/plugin.py` (pending a better way to integrate plugins into pygeoapi):
+
+```python
+    'process_manager': {
+        'TinyDB': 'pygeoapi.process.manager.tinydb_.TinyDBManager',
+        'Redis': 'pygeoapi_redis_manager_plugin.RedisManager' # <---
+    }
+```
+
 If you run `docker-compose up --scale worker=4`, then all the defined services will be brought up in orchestra, with four worker processes running. This means that as many as four processing jobs can be executed at once, with any other jobs after that being put onto the worker queue and executed as workers complete existing jobs.
 
 The `worker` `command` `/pygeoapi/pygeoapi/process/manager/redis_worker_.py -q hello-world -q wkt-reprojector` includes two job queues, `hello-world` and `wkt-reprojector`. The first is the built-in sample process for pygeoapi; the second is defined as a [plugin](https://github.com/manaakiwhenua/wkt-reprojector-plugin) (incude in your `requirements-processes.txt` as `git+https://github.com/manaakiwhenua/wkt-reprojector-plugin.git@master` or otherwise follow instructions in that repository). Workers need to be told which queues to work on, and do not need to work on all of them.
